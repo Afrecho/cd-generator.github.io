@@ -1,0 +1,176 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    
+    --color-cd: pink;
+    --font-titles: 'Courier New', Courier, monospace;
+    --background-container: url(/img/disc_soul.jpg);
+}
+
+.container{
+    
+    margin-top: 140px;
+    width: 100%;
+    height: 400px;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+}
+
+.inputs{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+
+.generator{
+    height: 100%;
+    flex: 1;
+    border: 1px solid salmon;
+    width: 123px;
+    box-sizing: border-box;
+    padding: 1%;
+}
+
+.el-cd{ /* div central */
+    padding: 1%;
+    box-sizing: border-box;
+    align-items: center;
+    flex: 2;
+    background-image: var(--background-container); 
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+#cd{
+    position: relative;
+    background-color: var(--color-cd);
+    height: 360px;
+    width: 360px;
+    border-radius: 50%;
+    padding: 2%;
+    align-items: center;
+    transition: transform 4s cubic-bezier(0.4, 0.0, 0.2, 1 );
+    box-sizing: border-box;
+    left: 20%;
+    
+}
+
+
+
+.rotate{
+    transform: rotate(360deg);
+    animation: spin 3s linear infinite;
+    
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+#play{
+    content: "STOP";
+}
+
+.band-name{ /*DIV*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    
+    
+    width: 54%;
+    height: 20%;
+    left: 23%;
+    top: 10%;
+    z-index: 3;
+    text-align: center;
+}
+
+ #band-name{ /*texto*/
+  
+    width: 100%;  
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+#cd-center{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    left: 40%;
+    top: 20%;
+    border: 0px solid rgba(43, 42, 42, 0.219);
+    border-radius: 50%;
+    z-index: 1;
+    background-color: antiquewhite;
+
+}
+
+
+#cd-name{ /*Div Album name*/
+    display: flex;
+    flex-direction: column;
+    margin-top: 28%;
+    
+    width: 60%;
+    height: 20%;
+    
+    margin-left: 20%; 
+    text-align: center; 
+    font-family: 'Courier New', Courier, monospace;    
+} 
+
+
+#album-name, #band-name{
+    color: var(--color-titles);
+    font-family: var(--font-titles);
+    margin-top: auto;
+    margin-bottom: auto;
+    vertical-align: auto;
+    height: auto;
+    
+}
+
+.btn{
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    color: bisque;
+    background-color: rgb(68, 56, 26);
+    box-shadow: 3px 3px 4px rgb(85, 87, 85);
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.botones{
+    max-width: 100%;
+    height: 120px;
+    background-color: bisque;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+
+}
+
+.botones button{
+    flex:  1 1 30%;
+    
+    margin: 0;
+    padding: 8px;
+}
+
+

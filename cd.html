@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cd-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Astloch:wght@400;700&family=Bungee+Hairline&family=Bungee+Spice&family=Codystar:wght@300;400&family=Creepster&family=Flavors&family=Henny+Penny&family=Life+Savers:wght@400;700;800&family=Nosifer&family=Press+Start+2P&family=Snowburst+One&family=Zen+Dots&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>CD generator</title>
+<style>
+
+   
+
+
+</style>
+
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="generator inputs">
+
+<form action="">
+<label for="">NOMBRE DE ARTISTA</label><br>
+<input id="inputName" type="text" name="bandName" placeholder="Ingresa nombre de banda o solista">
+<br>
+<br>
+<label for="">NOMBRE DE ALBUM</label><br>
+<input id="inputAlbum" type="text" placeholder="Ingresa nombre de album">
+<br>
+<br>
+<select name="" id="fuente">
+    <option style="font-family: Courier New">Courier New</option>
+    <option style="font-family: 'Snowburst One', serif;">Snowburst One</option>
+<option style="font-family: 'Henny Penny', serif; font-size: large;" >Henny Penny</option>
+<option style="font-family: 'Bungee Spice', serif;">Bungee Spice</option>
+<option style="font-family: 'Allura', serif;">Allura</option>
+
+<option style="font-family: 'Zen Dots', serif;">Zen Dots</option>
+<option style="font-family: 'Zilla Slab Highlight', serif;">Zilla Slab Highlight</option>
+<option style="font-family: 'Creepster', serif;">Creepster</option>
+<option style="font-family: 'Nosifer', serif;">Nosifer</option>
+<option style="font-family: 'Flavors', serif;">Flavors</option>
+<option style="font-family: 'Codystar', serif;">Codystar</option>
+<option style="font-family: 'Astloch', serif;">Astloch</option>
+<option style="font-family: 'Life Savers', serif;">Life Savers</option>
+<option style="font-family: 'Bungee Hairline', serif;">Bungee Hairline</option>
+
+</select>
+
+<br>
+<br>
+<label for="">COLOR DE TEXTO</label><br>
+<input type="color" name="" id="inputTextColor">
+<br>
+<br>
+<label for="">COLOR DE CD</label><br>
+<input type="color" name="" id="inputCdColor">
+
+<div class="botones">
+
+<button id="btn-bg1" class="btn-fondo">DESKTOP</button>
+<button id="btn-bg2" class="btn-fondo">TABLE</button>
+<button id="btn-bg3" class="btn-fondo">BED</button>
+<button id="btn-bg4" class="btn-fondo">COFFEE</button>
+<button id="btn-bg5" class="btn-fondo">PAINTER</button>
+<button id="btn-bg6" class="btn-chroma">CHROMA</button>
+
+</div>
+
+</form>
+
+
+        </div>
+        <div id="cdContainer" class="generator el-cd">
+
+            <div id="cd">
+                <div class="div-cd band-name"> <p id="band-name">nombre de prueba</p></div>
+                <div class="div-cd" id="cd-center"></div>
+                <div class="div-cd " id="cd-name"><p id="album-name">nombre de prueba</p></div>
+
+            </div>
+
+            
+
+        </div>
+        <div id="losFondos" class="generator fondo">
+            <button class="btn" id="play">PLAY</button><br>
+            <button class="btn" id="export">EXPORT MP4</button>
+
+        </div>
+
+    </div>
+    
+    
+</body>
+
+<script>
+//ROTACION
+const cd = document.getElementById('cd');
+const playButton = document.getElementById('play');
+
+playButton.addEventListener('click', () => {
+    cd.classList.toggle('rotate');
+    
+         playButton.textContent = playButton.textContent === 'STOP' ? 'PLAY' : 'STOP';
+                
+
+});
+
+// input
+
+const inputName = document.getElementById('inputName');
+const bandName = document.getElementById('band-name');
+
+inputName.addEventListener('change', () =>{
+    bandName.textContent = inputName.value; 
+});
+
+const inputAlbum = document.getElementById('inputAlbum');
+const albumName = document.getElementById('album-name');
+
+inputAlbum.addEventListener('change', ()=>{
+    albumName.textContent = inputAlbum.value;
+})
+
+const inputTextColor = document.getElementById('inputTextColor');
+const inputCdColor = document.getElementById('inputCdColor');
+
+inputTextColor.addEventListener('change', () =>{
+    document.documentElement.style.setProperty('--color-titles', inputTextColor.value);
+});
+
+inputCdColor.addEventListener('change',() =>{
+    document.documentElement.style.setProperty('--color-cd', inputCdColor.value);
+})
+
+document.getElementById("fuente").onchange = function(){
+    var fontSelected = this.value;
+    bandName.style.fontFamily = fontSelected; 
+    albumName.style.fontFamily = fontSelected; 
+}
+
+
+const fondoButtons = document.querySelectorAll('.btn-fondo');
+
+const backgroundImages =[
+    '/img/band-1.jpg', 
+    '/img/band-2.jpg', 
+    '/img/band-3.jpg', 
+    '/img/band-4.jpg', 
+    '/img/band-5.jpg'   
+];
+
+fondoButtons.forEach((button, index) =>{
+    button.addEventListener('click', (e)=>{
+        e.preventDefault();
+
+        const cdBg = document.getElementById('cdContainer');
+
+        cdBg.style.backgroundImage = `url(${backgroundImages[index]})`;
+
+
+    });
+} );
+
+const chromaButton = document.getElementById('btn-bg6');
+
+chromaButton.addEventListener('click', (e) =>{
+    e.preventDefault();
+
+    const cdBg = document.getElementById('cdContainer');
+    cdBg.style.backgroundImage = 'none';
+    cdBg.style.backgroundColor = '#00FF00';
+})
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
