@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
 
-
+<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
 
     <title>CD generator</title>
 <style>
@@ -93,6 +93,8 @@
         <div id="losFondos" class="generator fondo">
             <button class="btn" id="play">PLAY</button><br>
             <button class="btn" id="export">EXPORT MP4</button>
+            <br>
+            <span id="progressSpan"></span>
 
         </div>
 
@@ -114,7 +116,6 @@
         
              playButton.textContent = playButton.textContent === 'STOP' ? 'PLAY' : 'STOP';
                     
-    
     });
     
     // input
